@@ -44,7 +44,10 @@ pub use generic_asset;
 mod fee;
 
 /// Used for the module template in `./template.rs`
-mod template;
+mod hospitaltxn;
+
+//mod insurer;
+
 
 /// Opaque types. These are used by the CLI to instantiate machinery that don't need to know
 /// the specifics of the runtime. They can then be made to be agnostic over specific formats
@@ -238,9 +241,14 @@ impl cennzx_spot::Trait for Runtime {
 }
 
 /// Used for the module template in `./template.rs`
-impl template::Trait for Runtime {
+impl hospitaltxn::Trait for Runtime {
 	type Event = Event;
 }
+
+/// Used for the module template in `./template.rs`
+// impl insurer::Trait for Runtime {
+// 	type Event = Event;
+// }
 
 construct_runtime!(
 	pub enum Runtime with Log(InternalLog: DigestItem<Hash, AuthorityId, AuthoritySignature>) where
@@ -262,7 +270,9 @@ construct_runtime!(
 		Fees: fees::{Module, Call, Fee, Storage, Config<T>, Event<T>},
 		CennzxSpot: cennzx_spot::{Module, Call, Storage, Config<T>, Event<T>},
 		// Used for the module template in `./template.rs`
-		TemplateModule: template::{Module, Call, Storage, Event<T>},
+		Hospitaltxn: hospitaltxn::{Module, Call, Storage, Event<T>},
+		//Insurer: insurer::{Module, Call, Storage, Event<T>},
+
 	}
 );
 
