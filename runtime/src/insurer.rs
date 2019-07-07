@@ -17,7 +17,6 @@ use crate::hospitaltxn::{PatientKey,HospitalKey};
 #[derive(Encode, Decode,Clone,Eq,Debug,PartialEq)]
 
 pub struct HospitalRecord<AccountId> {
-	HospitalKey: AccountId,
 	Code: i64,
 }
 
